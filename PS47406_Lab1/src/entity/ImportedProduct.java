@@ -1,0 +1,48 @@
+package entity;
+
+import java.util.jar.Attributes.Name;
+
+public class ImportedProduct extends Product{
+	private double importTaxRate;
+	private double shippingFee;
+	
+	public ImportedProduct() {}
+	public ImportedProduct(String id, String name, double basePrince,double importTaxRate, double shippingFee) {
+		super(id, name, basePrince);
+		this.setImportTaxRate(importTaxRate);
+		this.setShippingFee(shippingFee);
+	}
+	public double getImportTaxRate() {
+		return importTaxRate;
+	}
+	public boolean setImportTaxRate(double importTaxRate) {
+		if( importTaxRate >=0 && importTaxRate <=1) {
+			this.importTaxRate = importTaxRate;
+			return true;
+		}
+		return false;
+		
+	}
+	public double getShippingFee() {  
+		return shippingFee;
+	}
+	public boolean setShippingFee(double shippingFee) {
+		if(shippingFee >=0) {
+			this.shippingFee = shippingFee;
+			return true;
+		}
+		return false;
+	}
+	@Override
+	public double finalPrice() {
+		// TODO Auto-generated method stub
+		return super.finalPrice()+super.finalPrice()*this.importTaxRate+this.shippingFee;
+	}
+	@Override
+	public String toString() {
+	    return super.toString() + 
+	           ", importTaxRate=" + importTaxRate + 
+	           ", shippingFee=" + shippingFee ;
+	}
+
+}
