@@ -64,7 +64,6 @@ public class Product {
 		return this.giasanpham;
 	}
 
-	@Override
 	public String toString() {
 	    return String.format("Product [ID: %-5s | Tên: %-15s | Giá: %,.0f VNĐ | Loại: %s]", 
 	                          id, name, giasanpham, loaisanpham);

@@ -35,7 +35,7 @@ public class MainBai2 {
 			sumPriceMap.put(cat, sumPriceMap.getOrDefault(cat, 0.0)+ a.getGiasanpham());
 			countMap.put(cat, countMap.getOrDefault(cat, 0)+1);
 		}
-		// hiển thị kết quả
+		
 		System.out.println("_______________________________________________________________");
 	    System.out.printf("%-15s | %-10s | %-20s\n","Loại", "Số lượng ", "Tổng Tiền" );
 		for (Map.Entry<ProductCategory, Integer> entry : countMap.entrySet()) {
