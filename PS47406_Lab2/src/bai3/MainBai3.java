@@ -9,11 +9,11 @@ public class MainBai3 {
 		int chon;
 		do {
             System.out.println(" >>>MENU QUẢN LÝ<<< ");
-            System.out.println("1. Thêm nhân viên mới");
-            System.out.println("2. Hiển thị danh sách");
-            System.out.println("3. Tìm nhân viên theo mã");
-            System.out.println("4. Cập nhật lương nhân viên");
-            System.out.println("0. Thoát chương trình");
+            System.out.println("Chức năng 1>> Thêm nhân viên mới");
+            System.out.println("Chức năng 2>>. Hiển thị danh sách");
+            System.out.println("Chức năng 3>> Tìm nhân viên theo mã");
+            System.out.println("Chức năng 4>> Cập nhật lương nhân viên");
+            System.out.println("Chức năng 5>> Thoát chương trình");
             System.out.print(">> Hãy chọn chức năng: ");
             
             chon = Integer.parseInt(sc.nextLine());
@@ -24,20 +24,21 @@ public class MainBai3 {
                     System.out.println(" Nhập thông tin nhân viên");
                     Employee nvMoi = new Employee();                     
                     System.out.print("Nhập id: ");
-                    String id = sc.nextLine();                
-                    System.out.print("Nhập tên: ");
+                    String id = sc.nextLine().trim();                
+                    System.out.print("Nhập tên: "); 
                     String name = sc.nextLine();
                     nvMoi.setName(name);                    
                     System.out.print("Nhập lương: ");
-                    double salary = Double.parseDouble(sc.nextLine());           
+                    double salary = sc.nextDouble();
+                    sc.nextLine();
                     if (nvMoi.setId(id) && nvMoi.setSalary(salary)) {
                         service.addEmployee(nvMoi); 
                     } else {
                         System.out.println(">> Thêm thất bại");
                     }
 
-                    System.out.print("Bạn có muốn nhập thêm nhân viên nữa không? (Y/N): ");
-                    tiepTuc = sc.nextLine();
+                    System.out.print("Bạn có muốn nhập thêm nhân viên nữa không?: ");
+                    tiepTuc = sc.nextLine().trim();
                 } while (tiepTuc.equalsIgnoreCase("y"));
                 break;
 			case 2:
@@ -45,7 +46,7 @@ public class MainBai3 {
 				break;
 			case 3:
 				System.out.println("nhập mã nhân viên cần tìm");
-				String maTim = sc.nextLine();
+				String maTim = sc.nextLine().trim();
 				Employee ketQua = service.timMaNV(maTim);
 				if( ketQua != null) {
 					System.out.println("Kết quả"+ ketQua);
@@ -55,9 +56,10 @@ public class MainBai3 {
 				} break;
 			case 4:
 				System.out.println(" Nhập mã nhân viên cần sửa lương");
-				String maSua = sc.nextLine();
+				String maSua = sc.nextLine().trim();
 				System.out.println("nhập lương mới");
-				double luongMoi = Double.parseDouble(sc.nextLine());
+				double luongMoi = sc.nextDouble();
+				sc.nextLine();
 				if( service.capNhatLuong(maSua, luongMoi))
 				System.out.println(">> Đã cập nhật lương");
 		
